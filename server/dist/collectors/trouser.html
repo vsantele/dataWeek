@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/style/config.css" />
+    <title>Enr Pantalon</title>
+  </head>
+  <body>
+    <div class="collectorContainer">
+      <button class="button brown" id="brown" onclick="sendData('brown')">
+        Brun
+      </button>
+      <button class="button white" id="white" onclick="sendData('white')">
+        Blanc
+      </button>
+      <button class="button black" id="black" onclick="sendData('black')">
+        Noir
+      </button>
+      <button class="button red" id="red" onclick="sendData('red')">
+        Rouge
+      </button>
+      <button class="button blue" id="blue" onclick="sendData('blue')">
+        Bleu
+      </button>
+      <button class="button other" id="other" onclick="sendData('other')">
+        Autre
+      </button>
+    </div>
+    <script>
+      async function sendData(name) {
+        const response = await fetch("/api/trouser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name }),
+        });
+        const json = await response.json();
+        console.log(json);
+      }
+    </script>
+  </body>
+</html>

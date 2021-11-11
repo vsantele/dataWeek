@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/style/config.css" />
+    <title>Enr Coupe Cheveux</title>
+  </head>
+  <body>
+    <div class="collectorContainer">
+      <button class="button blue" id="long" onclick="sendData('long')">
+        Long
+      </button>
+      <button class="button red" id="midlenght" onclick="sendData('midlenght')">
+        Mi-long
+      </button>
+      <button class="button green" id="short" onclick="sendData('short')">
+        Court
+      </button>
+      <button class="button orange" id="bald" onclick="sendData('bald')">
+        Chauve
+      </button>
+    </div>
+
+    <script>
+      async function sendData(name) {
+        const response = await fetch("/api/hairCut", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name }),
+        });
+        const json = await response.json();
+        console.log(json);
+      }
+    </script>
+  </body>
+</html>

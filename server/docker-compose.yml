@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+  app:
+    restart: unless-stopped
+    image: "wolfvic.azurecr.io/dataweek:${VERSION}"
+    env_file:
+      - .env
+    ports:
+      - 4448:4448
+    volumes:
+      - ./data:/data

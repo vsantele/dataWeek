@@ -1,0 +1,28 @@
+@startuml dataweek
+agent collectors
+
+component serveur
+
+agent wifiScan
+
+queue wifiQueue
+
+component wifiSub
+
+database DB
+database macInfo
+
+card view
+
+
+
+collectors --> serveur
+serveur --> DB
+
+wifiScan --> wifiQueue
+wifiQueue --> wifiSub
+wifiSub <-right-> macInfo
+wifiSub --> DB
+serveur --> view
+
+@enduml

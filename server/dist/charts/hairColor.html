@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"
+      integrity="sha256-7lWo7cjrrponRJcS6bc8isfsPDwSKoaYfGIHgSheQkk="
+      crossorigin="anonymous"
+    ></script>
+    <title>Graph Couleur Cheveux</title>
+  </head>
+  <body>
+    <div
+      class="chart-container"
+      style="position: relative; height: 90vh; width: 90vw"
+    >
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <script>
+      async function getData() {
+        const res = await fetch("/api/hairColors");
+
+        if (res.ok) {
+          const data = await res.json();
+          return data;
+        }
+        throw new Error("Data not found");
+      }
+      document.addEventListener("DOMContentLoaded", async function () {
+        const data = await getData();
+        const names = data.map((d) => d.name);
+        const counts = data.map((d) => d.count);
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const myChart = new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: names,
+            datasets: [
+              {
+                label: "J'ai pas d'idée",
+                data: counts,
+                backgroundColor: [
+                  "#5B3C11",
+                  "#88421D",
+                  "#A76726",
+                  "#F0C300",
+                  "##9D3E0C",
+                  "#8B6C42",
+                  "#C8AD7F",
+                ],
+              },
+            ],
+          },
+        });
+        setInterval(async () => {
+          const data = await getData();
+          const names = data.map((d) => d.name);
+          const counts = data.map((d) => d.count);
+          myChart.data.labels = names;
+          myChart.data.datasets[0].data = counts;
+          myChart.update();
+        }, 10000);
+      });
+    </script>
+  </body>
+</html>

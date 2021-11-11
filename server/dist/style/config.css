@@ -1,0 +1,78 @@
+.smallbutton {
+  border: 1px solid black;
+  color: black;
+  border-radius: 5px;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: bold;
+  padding: 0.25em 0.25em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 12px 5px;
+  cursor: pointer;
+}
+.button {
+  border: 3px solid black;
+  color: black;
+  border-radius: 25px;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: bold;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 60px;
+  margin: 25px 10px;
+  cursor: pointer;
+}
+
+.brown {
+  background-color: rgb(124, 45, 14);
+}
+.blond {
+  background-color: rgba(255, 255, 0, 0.692);
+}
+.ginger {
+  background-color: rgb(241, 130, 2);
+}
+.grey {
+  background-color: grey;
+}
+.white {
+  background-color: white;
+}
+.black {
+  background-color: black;
+  color: grey;
+}
+.red {
+  background-color: rgb(216, 47, 47);
+}
+.blue {
+  background-color: rgb(68, 181, 233);
+}
+.pink {
+  background-color: pink;
+}
+.green {
+  background-color: #6eeb83;
+}
+.orange {
+  background-color: #e8aa14;
+}
+.purple {
+  background-color: rgb(123, 70, 228);
+}
+.other {
+  background-color: rgb(221, 20, 228);
+}
+.collectorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.indexContainer {
+  display: flex;
+  flex-wrap: wrap;
+}

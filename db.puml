@@ -1,0 +1,21 @@
+@startuml db
+hide circle
+
+entity wifiConstructors {
+  * code
+  fullname
+}
+
+entity wifiDevices {
+  * **id: AI**
+  * mac
+  * constructorCode
+  * firstSeen
+  * lastSeen
+}
+
+wifiDevices::constructorCode --> wifiConstructors::code
+
+
+
+@enduml
