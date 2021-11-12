@@ -72,6 +72,7 @@ fastify.get("/api/:category", optGet, async (request, reply) => {
   const res = await prisma.category.findMany({
     where: { category },
     select: { name: true, count: true },
+    orderBy: { name: "asc" },
   });
   reply.send(res);
 });
