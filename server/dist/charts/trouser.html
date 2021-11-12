@@ -28,6 +28,15 @@
         }
         throw new Error("Data not found");
       }
+      const titles = [
+        { name: "black", title: "Noir", color: "black" },
+        { name: "blue", title: "Bleu", color: "rgb(68, 181, 233)" },
+        { name: "brown", title: "Brun", color: "rgb(124, 45, 14)" },
+        { name: "grey", title: "Gris", color: "grey" },
+        { name: "other", title: "Autre", color: "rgb(221, 20, 228)" },
+        { name: "red", title: "Rouge", color: "rgb(216, 47, 47)" },
+        { name: "white", title: "Blanc", color: "rgb(220, 220, 220)" },
+      ];
       document.addEventListener("DOMContentLoaded", async function () {
         const data = await getData();
         const names = data.map((d) => d.name);
@@ -43,9 +52,11 @@
                 data: counts,
                 backgroundColor: [
                   "black",
+                  "rgb(68, 181, 233)",
                   "rgb(124, 45, 14)",
                   "grey",
                   "rgb(221, 20, 228)",
+
                   "rgb(216, 47, 47)",
                   "rgb(220,220,220)",
                 ],
