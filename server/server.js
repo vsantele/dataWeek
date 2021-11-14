@@ -1,19 +1,25 @@
-const path = require("path");
-require("dotenv").config();
+import Prisma from "@prisma/client";
+import dotenv from "dotenv";
+import Fastify from "fastify";
+import fastifyCors from "fastify-cors";
+import fastifyStatic from "fastify-static";
+import path from "path";
+import UAParser from "ua-parser-js";
+dotenv.config();
+const __dirname = path.resolve();
 const logger =
   process.env.NODE_ENV !== "production"
-    ? true
+    ? { prettyPrint: true }
     : {
         file: path.join(__dirname, "data/dataweek.log"),
         level: "info",
         sync: true,
       };
-const fastify = require("fastify")({ logger });
-const fastifyCors = require("fastify-cors");
-const fastifyStatic = require("fastify-static");
-const { PrismaClient } = require("@prisma/client");
 
+const fastify = Fastify({ logger });
+const { PrismaClient } = Prisma;
 const prisma = new PrismaClient();
+
 const postEndpoints = [
   "gender",
   "hairColor",
@@ -77,6 +83,47 @@ fastify.get("/api/:category", optGet, async (request, reply) => {
   reply.send(res);
 });
 
+fastify.get("/quizz", async (request, reply) => {
+  const ua = UAParser(request.headers["user-agent"]);
+  // reply.send({ ua });
+  reply.redirect(303, process.env.QUIZZ_URL);
+  const browser = ua.browser?.name ?? "other";
+  const os = ua.os?.name ?? "other";
+  const deviceType = ua.device?.type ?? "other";
+  const deviceVendor = ua.device?.vendor ?? "other";
+  const deviceModel = ua.device?.model ?? "other";
+  let category = "browser";
+  prisma.category.upsert({
+    where: { category_name: { category, name: browser } },
+    update: { count: { increment: 1 } },
+    create: { category, name: browser, count: 1 },
+  });
+  category = "os";
+  prisma.category.upsert({
+    where: { category_name: { category, name: os } },
+    update: { count: { increment: 1 } },
+    create: { category, name: browser, count: 1 },
+  });
+  category = "deviceType";
+  prisma.category.upsert({
+    where: { category_name: { category, name: deviceType } },
+    update: { count: { increment: 1 } },
+    create: { category, name: browser, count: 1 },
+  });
+  category = "deviceVendor";
+  prisma.category.upsert({
+    where: { category_name: { category, name: deviceVendor } },
+    update: { count: { increment: 1 } },
+    create: { category, name: browser, count: 1 },
+  });
+  category = "deviceModel";
+  prisma.category.upsert({
+    where: { category_name: { category, name: deviceModel } },
+    update: { count: { increment: 1 } },
+    create: { category, name: browser, count: 1 },
+  });
+});
+
 const start = async () => {
   try {
     await fastify.register(fastifyCors);
@@ -87,7 +134,7 @@ const start = async () => {
     fastify.get("/", (request, reply) => {
       reply.sendFile("index.html");
     });
-    fastify.listen(4448);
+    fastify.listen(4448, "0.0.0.0");
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
