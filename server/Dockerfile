@@ -15,6 +15,7 @@ COPY prisma prisma
 RUN yarn prisma db push
 
 COPY dist dist
+COPY views views
 COPY server.js server.js
 
 
