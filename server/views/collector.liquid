@@ -12,7 +12,7 @@
 <body>
   <div class="collectorContainer">
     {% for item in infos%}
-    <button class="button {{item.code}}" id="{{item.code}}" onclick="sendData('{{code}}')">
+    <button class="button {{item.code}}" id="{{item.code}}" onclick="sendData('{{item.code}}')">
       {{item.name}}
     </button>
     {% endfor %}
