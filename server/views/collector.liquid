@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/style/config.css" />
+  <style>
+
+  </style>
+  <title>Enr {{name}}</title>
+</head>
+
+<body>
+  <div class="collectorContainer">
+    {% for item in infos%}
+    <button class="button {{item.code}}" id="{{item.code}}" onclick="sendData('{{code}}')">
+      {{item.name}}
+    </button>
+    {% endfor %}
+  </div>
+  <script>
+    async function sendData(name) {
+      const response = await fetch("/api/{{category}}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name }),
+      });
+      const json = await response.json();
+      console.log(json);
+    }
+  </script>
+</body>
+
+</html>

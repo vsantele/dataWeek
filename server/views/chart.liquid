@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"
+    integrity="sha256-7lWo7cjrrponRJcS6bc8isfsPDwSKoaYfGIHgSheQkk=" crossorigin="anonymous"></script>
+  <title>Graph {{name}}</title>
+</head>
+
+<body>
+  <div class="chart-container" style="position: relative; width: 90vw">
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+  <script>
+    function colorRand(c) {
+      let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      infos[c].color = color
+      return color
+    }
+    const infos = {
+      {% for item in infos %}
+        {{item.code }}: {
+          name: "{{item.name}}", color: "{{item.color}}"
+        },
+      {% endfor %}
+    };
+
+    async function getData() {
+      const res = await fetch("/api/{{category}}");
+      if (res.ok) {
+
+        const data = await res.json();
+        return data;
+      }
+      return {};
+    }
+    document.addEventListener("DOMContentLoaded", async function () {
+      const data =JSON.parse('{{data}}')
+      const codes = data.map((d) => d.name);
+      const names = codes.map((c) => infos[c]?.name || c)
+      const counts = data.map((d) => d.count);
+      const colors = codes.map((c) => infos[c]?.color || colorRand(c));
+      console.log(codes);
+      console.log(colors);
+      const ctx = document.getElementById("myChart").getContext("2d");
+      const myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: names,
+          datasets: [
+            {
+              label: "J'ai pas d'idée",
+              data: counts,
+              backgroundColor: colors,
+            },
+          ],
+        },
+      });
+      setInterval(async () => {
+        const data = await getData();
+        const codes = data.map((d) => d.name);
+        const names = codes.map((c) => infos[c]?.name || c)
+        const counts = data.map((d) => d.count);
+        const colors = codes.map((c) => infos[c]?.color || colorRand());
+        myChart.data.labels = names;
+        myChart.data.datasets[0].data = counts;
+        myChart.data.datasets[0].backgroundColor = colors;
+        myChart.update();
+      }, 10000);
+    });
+  </script>
+</body>
+
+</html>

@@ -7,6 +7,8 @@
     "fastify": "^3.23.1",
     "fastify-cors": "^6.0.2",
     "fastify-static": "^4.5.0",
+    "liquidjs": "^9.28.5",
+    "point-of-view": "^4.15.2",
     "prisma": "^3.4.2",
     "ua-parser-js": "^1.0.2"
   },

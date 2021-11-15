@@ -17,12 +17,12 @@
   border-radius: 25px;
   font-family: "Gill Sans", sans-serif;
   font-weight: bold;
-  padding: 20px 32px;
+  padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 60px;
-  margin: 25px 10px;
+  font-size: 32px;
+  margin: 12px 10px;
   cursor: pointer;
 }
 
@@ -45,23 +45,32 @@
   background-color: black;
   color: grey;
 }
-.red {
+.red,
+.male,
+.midlength {
   background-color: rgb(216, 47, 47);
 }
-.blue {
+.blue,
+.female,
+.long {
   background-color: rgb(68, 181, 233);
 }
 .pink {
   background-color: pink;
 }
-.green {
+.green,
+.short {
   background-color: #6eeb83;
 }
-.orange {
+.orange,
+.bald {
   background-color: #e8aa14;
 }
 .purple {
   background-color: rgb(123, 70, 228);
+}
+.yellow {
+  background-color: rgb(252, 255, 61);
 }
 .other {
   background-color: rgb(221, 20, 228);
@@ -69,7 +78,8 @@
 .collectorContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  height: 90vh;
 }
 
 .indexContainer {
