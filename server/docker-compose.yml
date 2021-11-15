@@ -9,4 +9,4 @@ services:
     ports:
       - 4448:4448
     volumes:
-      - ./data:/data
+      - ./data:data
