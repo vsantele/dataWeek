@@ -123,7 +123,7 @@ fastify.get("/charts/:category", optGet, async (request, reply) => {
   let info = {};
   if (specials.includes(category)) {
     info.choices = data.map((d) => ({
-      code: d.name,
+      code: d.name.trim().toLowerCase().replace(" ", "_"),
       name: d.name,
     }));
   } else {
