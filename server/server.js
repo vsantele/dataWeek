@@ -19,7 +19,7 @@ const logger =
         sync: true,
       };
 
-const fastify = Fastify({ logger });
+const fastify = Fastify({ logger, trustProxy: true });
 const { PrismaClient } = Prisma;
 const prisma = new PrismaClient();
 
@@ -123,7 +123,8 @@ fastify.get("/charts/:category", optGet, async (request, reply) => {
   let info = {};
   if (specials.includes(category)) {
     info.choices = data.map((d) => ({
-      code: d.name.trim().toLowerCase().replace(" ", "_"),
+      // code: d.name.trim().toLowerCase().replace(/[\s-]/g, "_"),
+      code: d.name,
       name: d.name,
     }));
   } else {

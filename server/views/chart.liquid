@@ -17,12 +17,13 @@
   <script>
     function colorRand(c) {
       let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      infos[c] = {}
       infos[c].color = color
       return color
     }
     const infos = {
       {% for item in infos %}
-        {{item.code }}: {
+        "{{item.code }}": {
           name: "{{item.name}}", color: "{{item.color}}"
         },
       {% endfor %}
