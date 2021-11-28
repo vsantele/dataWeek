@@ -1,0 +1,110 @@
+{
+  "gender": {
+    "code": "gender",
+    "name": "Genres",
+    "choices": [
+      { "code": "male", "name": "Homme", "color": "#008cba" },
+      { "code": "female", "name": "Femme", "color": "#ba0073" }
+    ]
+  },
+  "hairColor": {
+    "code": "hairColor",
+    "name": "Couleurs de cheveux",
+    "choices": [
+      { "code": "black", "name": "Noir", "color": "black" },
+      { "code": "blond", "name": "Blond", "color": "rgba(255, 255, 0, 0.692)" },
+      { "code": "brown", "name": "Brun", "color": "rgb(124, 45, 14)" },
+      { "code": "ginger", "name": "Roux", "color": "rgb(241, 130, 2)" },
+      { "code": "grey", "name": "Gris", "color": "grey" },
+      { "code": "white", "name": "Blanc", "color": "rgb(225, 225, 225)" },
+      { "code": "other", "name": "Autre", "color": "rgb(221, 20, 228)" }
+    ]
+  },
+  "hairCut": {
+    "code": "hairCut",
+    "name": "Coupes de cheveux",
+    "choices": [
+      { "code": "bald", "name": "Chauve", "color": "#E3B505" },
+      { "code": "long", "name": "Long", "color": "#95190C" },
+      { "code": "midlength", "name": "Mi-Long", "color": "#610345" },
+      { "code": "short", "name": "Court", "color": "#107E7D" }
+    ]
+  },
+  "mask": {
+    "code": "mask",
+    "name": "Masques",
+    "choices": [
+      { "code": "black", "name": "Noir", "color": "black" },
+      { "code": "blue", "name": "Bleu", "color": "rgb(68, 181, 233)" },
+      { "code": "motif", "name": "Motif", "color": "rgb(123, 70, 228)" },
+      { "code": "pink", "name": "Rose", "color": "pink" },
+      { "code": "white", "name": "Blanc", "color": "rgb(225,255,255)" },
+      { "code": "other", "name": "Autre", "color": "rgb(221, 20, 228)" }
+    ]
+  },
+  "shoe": {
+    "code": "shoes",
+    "name": "Chaussures",
+    "choices": [
+      { "code": "ballerina", "name": "Ballerines", "color": "#094074" },
+      { "code": "boots", "name": "Bottes", "color": "#ADDCA5" },
+      { "code": "heel", "name": "Chaussures à talon", "color": "#5ADBFF" },
+      { "code": "sneakers", "name": "Sneakers", "color": "#FE9000" },
+      { "code": "other", "name": "Autre", "color": "rgb(221, 20, 228)" }
+    ]
+  },
+  "shoesColor": {
+    "code": "shoesColor",
+    "name": "Couleurs de chaussure",
+    "choices": [
+      { "code": "black", "name": "Noir", "color": "black" },
+      { "code": "blue", "name": "Bleu", "color": "rgb(68, 181, 233)" },
+      { "code": "brown", "name": "Brun", "color": "rgb(124, 45, 14)" },
+      { "code": "green", "name": "Vert", "color": "rgb(0, 255, 0)" },
+      { "code": "grey", "name": "Gris", "color": "grey" },
+      { "code": "orange", "name": "Orange", "color": "rgb(255, 165, 0)" },
+      { "code": "pink", "name": "Rose", "color": "pink" },
+      { "code": "purple", "name": "Violet", "color": "rgb(128, 0, 128)" },
+      { "code": "red", "name": "Rouge", "color": "red" },
+      { "code": "white", "name": "Blanc", "color": "rgb(225,255,255)" },
+      { "code": "yellow", "name": "Jaune", "color": "yellow" },
+      { "code": "other", "name": "Autre", "color": "rgb(221, 20, 228)" }
+    ]
+  },
+  "top": {
+    "code": "top",
+    "name": "Hauts",
+    "choices": [
+      { "code": "black", "name": "Noir", "color": "black" },
+      { "code": "blue", "name": "Bleu", "color": "rgb(68, 181, 233)" },
+      { "code": "brown", "name": "Brun", "color": "rgb(124, 45, 14)" },
+      { "code": "green", "name": "Vert", "color": "rgb(0, 255, 0)" },
+      { "code": "grey", "name": "Gris", "color": "grey" },
+      { "code": "orange", "name": "Orange", "color": "rgb(255, 165, 0)" },
+      { "code": "pink", "name": "Rose", "color": "pink" },
+      { "code": "purple", "name": "Violet", "color": "rgb(128, 0, 128)" },
+      { "code": "red", "name": "Rouge", "color": "red" },
+      { "code": "white", "name": "Blanc", "color": "rgb(225,255,255)" },
+      { "code": "yellow", "name": "Jaune", "color": "yellow" },
+      { "code": "other", "name": "Autre", "color": "rgb(221, 20, 228)" }
+    ]
+  },
+  "trouser": {
+    "code": "trouser",
+    "name": "Pantalons",
+    "choices": [
+      { "code": "black", "name": "Noir", "color": "black" },
+      { "code": "blue", "name": "Bleu", "color": "rgb(68, 181, 233)" },
+      { "code": "brown", "name": "Brun", "color": "rgb(124, 45, 14)" },
+      { "code": "green", "name": "Vert", "color": "rgb(0, 255, 0)" },
+      { "code": "grey", "name": "Gris", "color": "grey" },
+      { "code": "orange", "name": "Orange", "color": "rgb(255, 165, 0)" },
+      { "code": "pink", "name": "Rose", "color": "pink" },
+      { "code": "purple", "name": "Violet", "color": "rgb(128, 0, 128)" },
+      { "code": "red", "name": "Rouge", "color": "red" },
+      { "code": "white", "name": "Blanc", "color": "rgb(225,255,255)" },
+      { "code": "yellow", "name": "Jaune", "color": "yellow" },
+      { "code": "other", "name": "Autre", "color": "rgb(221, 20, 228)" }
+    ]
+  }
+}
