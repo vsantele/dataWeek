@@ -2,9 +2,15 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style/config.css" />
+  <link rel="stylesheet" type="text/css" href="/style/toast.css">
   <style>
-
+    #vanilla-toast.default {
+      font-size: 2rem;
+    }
   </style>
   <title>Enr {{name}}</title>
 </head>
@@ -17,6 +23,7 @@
     </button>
     {% endfor %}
   </div>
+  <script src="/script/toast.js"></script>
   <script>
     async function sendData(name) {
       const response = await fetch("/api/{{category}}", {
@@ -27,9 +34,14 @@
         body: JSON.stringify({ name }),
       });
       const json = await response.json();
-      console.log(json);
+      if (response.ok) {
+        vanillaToast.show('Ajout ' + name, {duration:300});
+      } else {
+        vanillaToast.error('Erreur ' + json.message);
+      }
     }
   </script>
+
 </body>
 
 </html>

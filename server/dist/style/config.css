@@ -21,9 +21,10 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 32px;
-  margin: 12px 10px;
+  font-size: 3.5rem;
+  margin: 4px 10px;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .brown {
@@ -78,7 +79,6 @@
 .collectorContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 90vh;
 }
 
