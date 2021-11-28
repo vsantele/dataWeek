@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"
     integrity="sha256-7lWo7cjrrponRJcS6bc8isfsPDwSKoaYfGIHgSheQkk=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js" integrity="sha256-RgW6ICRcHgz1vaGkL5egQAqmkWxGbwa2E3Boz/3CapM=" crossorigin="anonymous"></script>
   <title>Graph {{name}}</title>
 </head>
 
@@ -39,6 +40,7 @@
       return {};
     }
     document.addEventListener("DOMContentLoaded", async function () {
+      Chart.register(ChartDataLabels);
       const data =JSON.parse('{{data}}')
       const codes = data.map((d) => d.name);
       const names = codes.map((c) => infos[c]?.name || c)
@@ -46,17 +48,43 @@
       const colors = codes.map((c) => infos[c]?.color || colorRand(c));
       const ctx = document.getElementById("myChart").getContext("2d");
       const myChart = new Chart(ctx, {
+        plugins: [ChartDataLabels],
         type: "pie",
         data: {
           labels: names,
           datasets: [
             {
-              label: "J'ai pas d'idée",
               data: counts,
               backgroundColor: colors,
             },
           ],
         },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {enabled: false},
+            datalabels: {
+              anchor: "end",
+              align: "start",
+              formatter: function(value, context) {
+                const total = context.chart.data.datasets[0].data.reduce(
+                  (a, b) => a + b
+                );
+                const pct = Math.round((value / total) * 100, 1);
+                return pct + '%';
+              },
+              borderWidth: 2,
+              borderColor: "white",
+              borderRadius: 8,
+              //color: 0,
+              font: {
+                weight: "bold",
+                size: "16rem",
+              },
+              backgroundColor: "lightgray"
+            }
+          }
+        }
       });
       setInterval(async () => {
         const data = await getData();
@@ -68,7 +96,7 @@
         myChart.data.datasets[0].data = counts;
         myChart.data.datasets[0].backgroundColor = colors;
         myChart.update();
-      }, 10000);
+      }, 8000);
     });
   </script>
 </body>
