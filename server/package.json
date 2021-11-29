@@ -2,14 +2,13 @@
   "name": "server",
   "packageManager": "yarn@3.1.0",
   "dependencies": {
-    "@prisma/client": "^3.4.2",
+    "@prisma/client": "^3.5.0",
     "dotenv": "^10.0.0",
-    "fastify": "^3.23.1",
+    "fastify": "^3.24.0",
     "fastify-cors": "^6.0.2",
     "fastify-static": "^4.5.0",
     "liquidjs": "^9.28.5",
-    "point-of-view": "^4.15.2",
-    "prisma": "^3.4.2",
+    "point-of-view": "^4.15.3",
     "ua-parser-js": "^1.0.2"
   },
   "scripts": {
@@ -19,6 +18,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "pino-pretty": "^7.2.0"
+    "pino-pretty": "^7.2.0",
+    "prisma": "^3.5.0"
   }
 }
